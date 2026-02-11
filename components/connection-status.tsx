@@ -14,7 +14,7 @@ export function ConnectionStatus({ state, roomId }: ConnectionStatusProps) {
   const [copied, setCopied] = useState(false);
 
   const copyLink = useCallback(() => {
-    const url = `${window.location.origin}/room/${roomId}`;
+    const url = `${window.location.origin}/${roomId}`;
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);

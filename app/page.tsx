@@ -13,17 +13,17 @@ export default function Home() {
 
   function handleCreate() {
     const roomId = generateRoomId();
-    router.push(`/room/${roomId}`);
+    router.push(`/${roomId}`);
   }
 
   function handleJoin() {
-    const code = joinCode.trim();
+    const code = joinCode.trim().toLowerCase();
     if (!code) return;
 
     // Support full URLs or just the room code
-    const match = code.match(/\/room\/([a-z]+-[a-z]+-\d+)/);
+    const match = code.match(/(?:\/room)?\/([a-z]+-[a-z]+-\d+)/);
     const roomId = match ? match[1] : code;
-    router.push(`/room/${roomId}`);
+    router.push(`/${roomId}`);
   }
 
   return (
@@ -61,8 +61,33 @@ export default function Home() {
           >
             <Input
               value={joinCode}
-              onChange={(e) => setJoinCode(e.target.value)}
-              placeholder="e.g. red-moon-12"
+              onChange={(e) => {
+                const raw = e.target.value.toLowerCase();
+                // If pasting a URL, keep as-is
+                if (raw.includes("/")) {
+                  setJoinCode(raw);
+                  return;
+                }
+                // Deleting — just lowercase and pass through
+                if (raw.length < joinCode.length) {
+                  setJoinCode(raw);
+                  return;
+                }
+                // Typing forward — strip dashes, reformat, auto-insert dashes
+                const chars = raw.replace(/-/g, "").slice(0, 10);
+                let formatted = "";
+                for (let i = 0; i < chars.length; i++) {
+                  if (i === 4 || i === 8) formatted += "-";
+                  formatted += chars[i];
+                }
+                if (chars.length === 4 || chars.length === 8) formatted += "-";
+                setJoinCode(formatted);
+              }}
+              placeholder="bold-moon-42"
+              autoCapitalize="none"
+              autoCorrect="off"
+              autoComplete="off"
+              spellCheck={false}
               className="flex-1 bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-500"
             />
             <Button type="submit" variant="secondary" disabled={!joinCode.trim()}>
