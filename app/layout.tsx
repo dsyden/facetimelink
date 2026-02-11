@@ -21,12 +21,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "FaceTimeLink",
+  title: "Peeko.tv",
   description: "Private video calls with a shareable link",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "FaceTimeLink",
+    title: "Peeko.tv",
   },
 };
 

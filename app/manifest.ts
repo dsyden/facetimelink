@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "FaceTimeLink",
-    short_name: "FaceTimeLink",
+    name: "Peeko.tv",
+    short_name: "Peeko.tv",
     description: "Private video calls with a shareable link",
     start_url: "/",
     display: "standalone",

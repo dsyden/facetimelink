@@ -31,7 +31,7 @@ export default function Home() {
       <Card className="w-full max-w-md bg-zinc-950 border-zinc-800">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold text-white">
-            FaceTimeLink
+            Peeko.tv
           </CardTitle>
           <p className="text-zinc-400 text-sm">
             Private video calls with a shareable link
@@ -43,12 +43,12 @@ export default function Home() {
             className="w-full h-12 text-lg"
             size="lg"
           >
-            Create Room
+            Create a Chat
           </Button>
 
           <div className="flex items-center gap-3">
             <div className="h-px flex-1 bg-zinc-800" />
-            <span className="text-zinc-500 text-sm">or join a room</span>
+            <span className="text-zinc-500 text-sm">or join a chat</span>
             <div className="h-px flex-1 bg-zinc-800" />
           </div>
 
